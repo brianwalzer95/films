@@ -18,11 +18,18 @@
 		<li><%= link_to "Movie News",'http://oscar.go.com/nominees'%></li>
 		<li><%= mail_to "brian.walzer@mydit.ie","Contact us"%></li>
 		<li><%= link_to "Movies",movies_path%></li>
+		<%if !signed_in? %>
+			<li><%=link_to "Sign in", login_path %></li>
+		<% else %>
+			<li>Signed in as <%=@current_user.name %></li>
+			<li><%=link_to "Sign Out",logout_path %></li>
+		<% end %>
+		
 	</ul>
 </div>
 
 
-<%= yield %>    #if you put two of these in it will repeat everything twice on the webpage
+<%= yield %>   
 
 </body>
 </html>

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-  get 'pages/home'
 
-  get 'pages/about'
-
+  controller :sessions do 
+	get 'login' => :new
+	post 'login' => :create
+	get 'logout' => :destroy
+	delete 'logout' => :destroy
+  end
+  
+  resources :users
+   	
   resources :genres
 
   resources :movies
